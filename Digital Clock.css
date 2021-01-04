@@ -1,0 +1,367 @@
+*/
+
+html, html::before, html::after,
+head, head::before, head::after,
+link, link::before, link::after,
+body, body::before, body::after {
+  position:absolute;
+  display: block;
+  content: "";
+  border: 1px solid #fff; /* solves animation issue with Safari */
+  background-color: #fff;
+  width: 9.5vmin;
+  height: 9.5vmin;
+  margin: 0;
+  box-sizing: border-box; /* solves rounding issue with Safari */
+}
+
+/* Hours */
+
+html {
+  left: calc((100vw - 83vmin)/2);
+  top: calc((100vh - 19vmin)/3);
+  clip-path: polygon(
+    0 1vmin, 1vmin 0, 9vmin 0, 10vmin 1vmin, /* h */
+    13vmin 1vmin, 14vmin 0, 22vmin 0, 23vmin 1vmin, /* h */
+
+    30vmin 1vmin, 31vmin 0, 39vmin 0, 40vmin 1vmin, /* m */
+    43vmin 1vmin, 44vmin 0, 52vmin 0, 53vmin 1vmin, /* m */
+
+    60vmin 1vmin, 61vmin 0, 69vmin 0, 70vmin 1vmin, /* s */
+    73vmin 1vmin, 74vmin 0, 82vmin 0, 83vmin 1vmin, /* s */
+
+    83vmin 18vmin, 82vmin 19vmin, 74vmin 19vmin, 73vmin 18vmin, /* s */
+    70vmin 18vmin, 69vmin 19vmin, 61vmin 19vmin, 60vmin 18vmin, /* s */
+
+    53vmin 18vmin, 52vmin 19vmin, 44vmin 19vmin, 43vmin 18vmin, /* m */
+    40vmin 18vmin, 39vmin 19vmin, 31vmin 19vmin, 30vmin 18vmin, /* m */
+
+    23vmin 18vmin, 22vmin 19vmin, 14vmin 19vmin, 13vmin 18vmin, /* h */
+    10vmin 18vmin, 9vmin 19vmin, 1vmin 19vmin, 0 18vmin, /* h */
+
+    0 19.1vmin, 100vw 19.1vmin, 100vw 100vh, 0 100vh); /* text */
+  animation-duration: 43200s;
+  animation-name: most_significant_hour_top;
+  animation-iteration-count: infinite;
+}
+
+html::before {
+  white-space: pre;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  content: "\a\a\a\a\a Pure Digital CSS, \1f1e8\1f1ed Swiss made, clock. No JavaScript, no HTML(*). Not even for this text.\a\a This page is best viewed at noon or midnight.\a Peek at css source file for commentary (https://quaxio.com/pure_css_digital_clock.css).";
+  left: -1vmin;
+  top: 8.5vmin;
+  animation-duration: 43200s;
+  animation-name: most_significant_hour_bottom;
+  animation-iteration-count: infinite;
+  line-height: 3vmin;
+  font-size: 2vmin;
+}
+
+html::after {
+  left: 12vmin;
+  top: -1vmin;
+  animation-duration: 43200s;
+  animation-name: least_significant_hour_top;
+  animation-iteration-count: infinite;
+}
+
+head {
+  left: 12vmin;
+  top: 8.5vmin;
+  animation-duration: 43200s;
+  animation-name: least_significant_hour_bottom;
+  animation-iteration-count: infinite;
+}
+
+/* Minutes */
+
+head::before {
+  left: 16vmin;
+  top: -10vmin;
+  animation-duration: 3600s;
+  animation-name: most_significant_min_sec_top;
+  animation-iteration-count: infinite;
+}
+
+head::after {
+  left: 16vmin;
+  top: -0.5vmin;
+  animation-duration: 3600s;
+  animation-name: most_significant_min_sec_bottom;
+  animation-iteration-count: infinite;
+}
+
+link {
+  left: 29vmin;
+  top: -10vmin;
+  animation-duration: 600s;
+  animation-name: least_significant_min_sec_top;
+  animation-iteration-count: infinite;
+}
+
+link::before {
+  left: -1vmin;
+  top: 8.5vmin;
+  animation-duration: 600s;
+  animation-name: least_significant_min_sec_bottom;
+  animation-iteration-count: infinite;
+}
+
+/* Seconds */
+
+link::after {
+  left: 16vmin;
+  top: -1vmin;
+  animation-duration: 60s;
+  animation-name: most_significant_min_sec_top;
+  animation-iteration-count: infinite;
+}
+
+body {
+  left: 59vmin;
+  top: 8.5vmin;
+  animation-duration: 60s;
+  animation-name: most_significant_min_sec_bottom;
+  animation-iteration-count: infinite;
+}
+
+body::before {
+  left: 12vmin;
+  top: -10vmin;
+  animation-duration: 10s;
+  animation-name: least_significant_min_sec_top;
+  animation-iteration-count: infinite;
+}
+
+body::after {
+  left: 12vmin;
+  top: -0.5vmin;
+  animation-duration: 10s;
+  animation-name: least_significant_min_sec_bottom;
+  animation-iteration-count: infinite;
+}
+
+/* Keyframes */
+
+/* from 12 -> 01 -> 02 -> 03 -> 04 -> 05 -> 06 -> 07 -> 08 -> 09 -> 10 -> 11 -> 12
+   we derive: 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 */
+@keyframes most_significant_hour_top {
+  0% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  8.332% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  8.333% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #000; }
+  83.332% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #000; }
+
+  83.333% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  100% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+}
+
+@keyframes most_significant_hour_bottom {
+  0% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  8.332% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  8.333% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+  83.332% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+
+  83.333% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  100% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+}
+
+/* from 12 -> 01 -> 02 -> 03 -> 04 -> 05 -> 06 -> 07 -> 08 -> 09 -> 10 -> 11 -> 12
+   we derive: 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2 */
+@keyframes least_significant_hour_top {
+  0% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  8.332% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  8.333% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  16.666% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  16.667% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  24.999% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  25% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  33.332% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  33.333% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+  41.666% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+
+  41.667% { border-top: 1vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+  49.999% { border-top: 1vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+
+  50% { border-top: 1vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+  58.332% { border-top: 1vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+
+  58.333% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  66.666% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  66.667% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+  74.999% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+
+  75% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+  83.332% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+
+  83.333% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #000; }
+  91.666% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #000; }
+
+  91.667% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  99.999% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  100% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+}
+
+@keyframes least_significant_hour_bottom {
+  0% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+  8.332% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+
+  8.333% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  16.666% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  16.667% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+  24.999% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+
+  25% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  33.332% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  33.333% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  41.666% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  41.667% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  49.999% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  50% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+  58.332% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+
+  58.333% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  66.666% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  66.667% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+  74.999% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+
+  75% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  83.332% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  83.333% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+  91.666% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+
+  91.667% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  99.999% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  100% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+}
+
+/* 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 0 */
+@keyframes most_significant_min_sec_top {
+  0% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #000; }
+  16.666% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #000; }
+
+  16.667% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  33.332% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  33.333% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  49.999% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  50% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  66.666% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  66.667% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+  83.332% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+
+  83.333% { border-top: 1vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+  99.999% { border-top: 1vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+
+  100% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #000; }
+}
+
+@keyframes most_significant_min_sec_bottom {
+  0% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+  16.666% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+
+  16.667% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  33.332% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  33.333% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+  49.999% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+
+  50% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  66.666% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  66.667% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  83.332% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  83.333% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  99.999% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  100% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+}
+
+/* 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 0 */
+@keyframes least_significant_min_sec_top {
+  0% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #000; }
+  9.999% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #000; }
+
+  10% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  19.999% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  20% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  29.999% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  30% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  39.999% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  40% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+  49.999% { border-top: 1vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+
+  50% { border-top: 1vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+  59.999% { border-top: 1vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+
+  60% { border-top: 1vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+  69.999% { border-top: 1vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+
+  70% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  79.999% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  80% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+  89.999% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+
+  90% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+  99.999% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #000; border-left: 1vmin solid #000; }
+
+  100% { border-top: 1vmin solid #000; border-right: 1vmin solid #000; border-bottom: 0.5vmin solid #f1f1f1; border-left: 1vmin solid #000; }
+}
+
+@keyframes least_significant_min_sec_bottom {
+  0% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+  9.999% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+
+  10% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  19.999% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  20% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+  29.999% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #f1f1f1; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+
+  30% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  39.999% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  40% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  49.999% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  50% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  59.999% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  60% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+  69.999% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+
+  70% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+  79.999% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #f1f1f1; border-left: 1vmin solid #f1f1f1; }
+
+  80% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+  89.999% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+
+  90% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+  99.999% { border-top: 0.5vmin solid #000; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #f1f1f1; }
+
+  100% { border-top: 0.5vmin solid #f1f1f1; border-right: 1vmin solid #000; border-bottom: 1vmin solid #000; border-left: 1vmin solid #000; }
+}
